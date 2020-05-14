@@ -16,19 +16,18 @@
 {carrots: 0.50},
 {milk: 1.00}
 ]
+
 @cost = 0
 
  def select_main_option
     puts "Main Dishes"
-    puts "1) Pizza: $#{@prices[0][:pizza]}"
-    puts "2) Chicken Fingers $#{@prices[1][:chicken]}"
-    puts "3) Sandwhich $#{@prices[2][:sandwhich]}"
+    puts "1) Pizza: $#{@prices[0][:pizza]}" + '0'
+    puts "2) Chicken Fingers: $#{@prices[1][:chicken]}" + '0'
+    puts "3) Sandwhich: $#{@prices[2][:sandwhich]}" + '0'
     puts "Enter a number to select and option"
     print ">"
     @main_dish = gets.chomp.to_i
- end 
 
- def select_main_dish
     case @main_dish
     when 1
         puts "you have selected Pizza"
@@ -42,14 +41,20 @@
         puts "you have selected Sandwhich"
         @order.push("Sandwhich")
         @cost += @prices[2][:sandwhich]
+    when 4
+        @order = []
+        @cost = 0
+        select_main_option
     end 
+    select_side_dish
  end 
 
  def select_side_dish
+    puts
     puts "Side Dishes"
-    puts "1) Chips $#{@prices[3][:chips]}"
-    puts "2) Carrots $#{@prices[4][:carrots]}"
-    puts "3) Milk $#{@prices[5][:milk]}"
+    puts "1) Chips: $#{@prices[3][:chips]}" + '0'
+    puts "2) Carrots: $#{@prices[4][:carrots]}" + '0'
+    puts "3) Milk: $#{@prices[5][:milk]}" + '0'
     puts "Enter a number to select and option"
     print ">"
     side_dish = gets.chomp.to_i
@@ -68,19 +73,20 @@
         @order.push("Milk")
         @cost += @prices[5][:milk]
     end 
- end 
+end 
 
  def total_cost
-    p @order
-    print "your total cost is:" 
-    puts @cost
+    puts 
+    puts "You have selected the main dish #{@order[0]}"
+    puts "with the side dishes #{@order[1]} and #{@order[2]}"
+    print "your total cost is: " 
+    puts '$' + @cost.to_s + '0'
  end 
 
- select_main_option
-select_main_dish
- select_side_dish
- select_side_dish
- total_cost
+select_main_option
+select_side_dish
+total_cost
+
 # Bonus Objectives:
 
 # the user can choose as many "add-on" items as they want before getting total
