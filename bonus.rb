@@ -41,6 +41,7 @@ class Customer
         @total_carbs = 0
         @total_fat = 0
         @total_protein = 0
+        @finished = false
     end 
 
     def select_main_option
@@ -103,9 +104,9 @@ class Customer
         puts "5) Start over"
         puts "Enter a number to select and option"
         print ">"
-        side_dish = gets.chomp.to_i
+        @side_dish = gets.chomp.to_i
 
-        case side_dish
+        case @side_dish
         when 1
             puts "you have selected Chips"
             @order.push("Chips")
@@ -150,9 +151,9 @@ class Customer
         puts "2) No, I would like to get my total and exit"
         puts "3) Start Over"
         print '>'
-        more_selector = gets.chomp.to_i
+        @more_selector = gets.chomp.to_i
 
-        case more_selector
+        case @more_selector
         when 1
             select_side_dish
             order_more
@@ -188,7 +189,17 @@ class Customer
         print "your total amount of protein is: "
         puts @total_protein.to_s + 'g'
     end 
+
+    if @main_dish.to_s == 'QUIT'
+        @finished = true 
+        exit
+    elsif @more_selector.to_s == 'QUIT'
+        @finished = true 
+        exit
+    elsif @side_dish.to_s == 'QUIT'
+    end 
 end 
+
 
 puts "Hey im Gretchen, whats your name?"
 print '>'
