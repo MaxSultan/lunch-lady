@@ -197,7 +197,14 @@ class Customer
         @finished = true 
         exit
     elsif @side_dish.to_s == 'QUIT'
+        @finished = true 
+        exit
     end 
+
+    # unless @finished == true
+    #     select_main_option
+    # end 
+
 end 
 
 
@@ -209,6 +216,7 @@ budget = gets.chomp.to_i
 
 cust1 = Customer.new(cust_name, budget)
 cust1.select_main_option
+cust1.select_side_dish
 cust1.order_more
 
 # Bonus Objectives:
