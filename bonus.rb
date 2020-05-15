@@ -197,6 +197,8 @@ class Customer
         @finished = true 
         exit
     elsif @side_dish.to_s == 'QUIT'
+        @finished = true 
+        exit
     end 
 end 
 
